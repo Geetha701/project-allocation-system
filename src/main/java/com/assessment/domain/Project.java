@@ -1,25 +1,78 @@
 package com.assessment.domain;
 
-import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
+import java.util.Date;
 
-@Document(collection = "projects")
-@Data
+@Document
 public class Project {
+
     @Id
-    private String projectId;
+    private String id;
+
     private AccountName accountName;
     private String projectName;
     private float allocation;
-    private LocalDate projectStartDate;
-    private LocalDate projectEndDate;
-    private String remarks;
-}
 
-enum AccountName {
-    ANCESTRY, BNYM, CALIBO_LLC, EXPERIAN, FORD, GUARANTEED_RATE, INVOICE_CLOUD,
-    VATTIKUTI_VENTURES_LLC, ZIP_CO_US_INC, PAYPAL, JOHNSON_CONTROLS_INC, WESTERN_UNION
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public AccountName getAccountName() {
+        return accountName;
+    }
+
+    public void setAccountName(AccountName accountName) {
+        this.accountName = accountName;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public float getAllocation() {
+        return allocation;
+    }
+
+    public void setAllocation(float allocation) {
+        this.allocation = allocation;
+    }
+
+    public Date getProjectStartDate() {
+        return projectStartDate;
+    }
+
+    public void setProjectStartDate(Date projectStartDate) {
+        this.projectStartDate = projectStartDate;
+    }
+
+    public Date getProjectEndDate() {
+        return projectEndDate;
+    }
+
+    public void setProjectEndDate(Date projectEndDate) {
+        this.projectEndDate = projectEndDate;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
+
+    private Date projectStartDate;
+    private Date projectEndDate;
+    private String remarks;
+
 }

@@ -1,9 +1,7 @@
 package com.assessment.repository;
 
 import com.assessment.domain.Project;
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
-import reactor.core.publisher.Mono;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
-public interface ProjectRepository extends ReactiveMongoRepository<Project, String> {
-    Mono<Project> findByProjectName(String projectName);
+public interface ProjectRepository extends MongoRepository<Project, String> {
 }
