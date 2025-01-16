@@ -1,10 +1,10 @@
 package com.assessment.api;
 
-
 import com.assessment.domain.Employee;
 import com.assessment.domain.EmployeeProjectAllocation;
 import com.assessment.service.EmployeeProjectAllocationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +16,7 @@ public class EmployeeProjectAllocationController {
     @Autowired
     private EmployeeProjectAllocationService allocationService;
 
+    @PreAuthorize("isAuthenticated()")
     @PostMapping("/allocate")
     public EmployeeProjectAllocation allocateEmployeeToProject(@RequestParam String employeeId,
                                                                @RequestParam String projectId,
@@ -23,6 +24,7 @@ public class EmployeeProjectAllocationController {
         return allocationService.allocateEmployeeToProject(employeeId, projectId, allocation);
     }
 
+    @PreAuthorize("isAuthenticated()")
     @PutMapping("/modify")
     public EmployeeProjectAllocation modifyProjectAllocation(@RequestParam String allocationId,
                                                              @RequestParam float newAllocation) {
